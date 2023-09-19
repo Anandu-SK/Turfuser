@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block body %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    </head>
+    <body>
+        <section class="h-100" style="background-image:url({% static '\images\messi.jpg' %}); background-position: center; background-size: cover;" >
+            <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100" style="padding: 180px; margin-top: -127px;">
+                <div class="col" style="margin-top: 20px;">
+                <div class="card card-registration my-4" style="background-color: rgba(0, 0, 0, 0.5);">
+                    <div class="row g-0">
+                   
+                    <div class="col-xl-12" >
+                        <div class="card-body p-md-5 text-white">
+                        <h3 class="mb-5 text-uppercase">User Registration</h3>
+                        
+                        <form action="{% url 'userregistration' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+        
+                                <div class="row">
+                                    <div class="col-md-12 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" name="uFname" id="form3Example1m" class="form-control form-control-lg" style="background-color: rgba(0,0,0,0.5); color: white;"/>
+                                        <label class="form-label" for="form3Example1m">First Name</label>
+                                    </div>
+                                    <div class="form-outline">
+                                        <input type="text" name="uLname" id="form3Example1m" class="form-control form-control-lg" style="background-color: rgba(0,0,0,0.5); color: white;"/>
+                                        <label class="form-label" for="form3Example1m">Last Name</label>
+                                    </div>
+                                    </div>
+                                </div>
+        
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="uPhone" id="form3Example90" required class="form-control form-control-lg" style="background-color: rgba(0,0,0,0.5); color: white;" inputmode="numeric"/>
+                                    <label class="form-label" for="form3Example90">Phone Number</label>
+                                </div>
+                
+                    
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="uEmail" id="form3Example97" class="form-control form-control-lg" style="background-color: rgba(0,0,0,0.5); color: white;"/>
+                                    <label class="form-label" for="form3Example97">Email ID</label>
+                                    <label for="" style="color: red;">{{msg}}</label>
+                                </div>
+        
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="uPassword" id="form3Example97" class="form-control form-control-lg" style="background-color: rgba(0,0,0,0.5); color: white;"/>
+                                    <label class="form-label" for="form3Example97">Password</label>
+                                </div>
+        
+                                <div class="form-outline mb-4">
+                                    <input type="submit"  id="form3Example97" class="form-control form-control-lg btn btn-outline border" style="background-color: rgba(0,0,0,0.5); color: white; width: 120px;" value="SUBMIT"/>
+                                </div>
+        
+                        </form>
+        
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+{% endblock %}

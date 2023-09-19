@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block body %}
+
+<section id="intro">
+    <div class="intro-container" style="overflow: visible;">
+        <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+            <!-- Carousel Indicators -->
+            <ol class="carousel-indicators">
+            </ol>
+
+            <!-- Carousel Slides -->
+            <div class="carousel-inner" role="listbox">
+                {% for i in carouselimages %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    
+                    <img src="{{i.Image.url}}" alt="Slide 1" style="width: 100%; ">
+                    
+                    <div class="carousel-caption" style="margin-bottom: 436px;">
+                        <h2>LET THE PLAY BEGIN</h2>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle btn-get-started scrollto" type="button" data-toggle="dropdown">
+                                Choose your District
+                            </button>
+                            <ul class="dropdown-menu" style="background-color: #ffffff08; width: 20px; min-width: 17rem">
+                                {% for i in data %}
+                                <li class="dropdown-item"><a href="{% url 'turflocationdropdown' i.id %}"><option value="" style="width: 40px; color: #18d26e;" name="tDistrict">{{i.districtname}}</option></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+                
+
+                
+            <!-- Carousel Controls -->
+            <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        
+        </div>
+    </div>
+</section>
+
+{% endblock %}

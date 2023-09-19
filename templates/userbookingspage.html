@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block body %}
+
+<div style="background-image: url({% static '\images\bookingbackground.jpg' %}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="card" style="background: rgba(0,0,0,0.5);">
+      <div class="card-body" style="margin-top:120px; margin-bottom: 420px; color: white;">
+        <div class="table-responsive">
+        {% if userbookings_list_length == 0 %}
+        <h1 id="zero_bookings">You have no bookings yet....</h1>
+        {% else %}
+        <table class="table table-bordered" >
+            <thead>
+                <tr>
+                    <th>Sl.no</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Turf Address</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+          <tbody>
+            {% for i in userbookings %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{i.ubookingname}}</td>
+              <td>{{i.ubookingphone}}</td>
+              <td>{{i.ubookingaddress}}</td>
+              <td>{{i.ubookingcategory}}</td>
+              <td>{{i.ubookingprice}}</td>
+              <td>{{i.ubookingdate}}</td>
+              <td>{{i.ubookingtime}}</td>
+              {% if i.ubookingstatus == "1" %}
+              <td>
+                <i class="checkmark" style="color: #1bd515;font-size: 15px;font-weight: bold;line-height: 40px; margin-left:-15px;padding-left: 22px;">✓ APPROVED</i>
+              </td>
+              {% elif i.ubookingstatus == "2" %}
+              <td>
+                <i class="checkmark" style="color: #ff0000;font-size: 15px;font-weight: bold;line-height: 40px; margin-left:-15px;padding-left: 22px;">X REJECTED</i>
+              </td>
+              {% else %}
+              <td>
+                <i class="checkmark" style="color: #fffb00;font-size: 15px;font-weight: bold;line-height: 40px; margin-left:-15px;padding-left: 22px;">⌛ Pending...</i>
+              </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+      </div>
+    </div>
+  </div>
+</div><!--End Row-->
+
+{% endblock %}
